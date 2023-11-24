@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import TrendSlice from "@/features/Trend/TrendSlice";
+import TrendSlice from "@/features/trend/TrendSlice";
 import MarketSlice from "@/features/Market/MarketSlice";
 import CryptoSlice from "@/features/Crypto/CryptoSlice";
 
