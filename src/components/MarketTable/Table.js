@@ -1,44 +1,37 @@
-import React, { useEffect, useState } from "react";
-import { Table, InputGroup, Form } from "react-bootstrap";
-import MarketTableRow from "@/components/MarketTable/TableRow";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchMarketData } from "@/features/Market/MarketSlice";
-import { IMarketState, IMarketCoin } from "@/types";
-import { Spinner, Alert } from "react-bootstrap";
-import "./MarketTable.scss";
+import React, { useEffect, useState } from "react"
+import { Table, InputGroup, Form } from "react-bootstrap"
+import MarketTableRow from "@/components/MarketTable/TableRow"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchMarketData } from "@/features/Market/MarketSlice"
+import { Spinner, Alert } from "react-bootstrap"
+import "./MarketTable.scss"
 
-const MarketTable: React.FC = () => {
-  const [search, setSearch] = useState("");
-  const dispatch: any = useDispatch();
+const MarketTable = () => {
+  const [search, setSearch] = useState("")
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchMarketData());
-  }, [dispatch]);
+    dispatch(fetchMarketData())
+  }, [dispatch])
 
-  const market = useSelector(
-    (state: { market: IMarketState }) => state.market.data
-  );
+  const market = useSelector(state => state.market.data)
 
-  const isLoading = useSelector(
-    (state: { market: IMarketState }) => state.market.loading
-  );
+  const isLoading = useSelector(state => state.market.loading)
 
-  const error = useSelector(
-    (state: { market: IMarketState }) => state.market.error
-  );
+  const error = useSelector(state => state.market.error)
 
-  const handleSearch = (e: any) => {
-    let value = e.target.value;
-    setSearch(value.replace(/\s+/g, ""));
-  };
+  const handleSearch = e => {
+    let value = e.target.value
+    setSearch(value.replace(/\s+/g, ""))
+  }
 
   const filteredMarket = !search
     ? market
     : market?.filter(
-        (item) =>
+        item =>
           item.name.toLowerCase().includes(search.toLowerCase()) ||
           item.symbol.toLowerCase().includes(search.toLowerCase())
-      );
+      )
 
   return (
     <div className="section-gap">
@@ -78,7 +71,7 @@ const MarketTable: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredMarket?.map((item: IMarketCoin, index: number) => (
+            {filteredMarket?.map((item, index) => (
               <MarketTableRow key={index} item={item} />
             ))}
           </tbody>
@@ -87,7 +80,7 @@ const MarketTable: React.FC = () => {
         <Alert variant="warning">It was not found</Alert>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default MarketTable;
+export default MarketTable

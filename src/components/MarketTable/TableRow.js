@@ -1,18 +1,17 @@
-import React, { useState } from "react";
-import { IMarketRowProps } from "@/types";
-import useCurrencyFormat from "@/hooks/useCurrencyFormat";
-import DetailModal from "@/components/Modal/DetailModal";
+import React, { useState } from "react"
+import useCurrencyFormat from "@/hooks/useCurrencyFormat"
+import DetailModal from "@/components/Modal/DetailModal"
 
-const MarketTableRow: React.FC<IMarketRowProps> = ({ item }) => {
-  const [showModal, setShowModal] = useState(false);
-  const formatCurrency = useCurrencyFormat();
+const MarketTableRow = ({ item }) => {
+  const [showModal, setShowModal] = useState(false)
+  const formatCurrency = useCurrencyFormat()
 
   const handleShowModal = () => {
-    setShowModal(true);
-  };
+    setShowModal(true)
+  }
   const handleCloseModal = () => {
-    setShowModal(false);
-  };
+    setShowModal(false)
+  }
 
   return (
     <>
@@ -50,7 +49,7 @@ const MarketTableRow: React.FC<IMarketRowProps> = ({ item }) => {
         coinId={item?.id}
       />
     </>
-  );
-};
+  )
+}
 
-export default MarketTableRow;
+export default MarketTableRow

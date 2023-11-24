@@ -1,17 +1,16 @@
-import React, { useState } from "react";
-import { Card } from "react-bootstrap";
-import { ITrendCardProps } from "@/types";
-import DetailModal from "@/components/Modal/DetailModal";
+import React, { useState } from "react"
+import { Card } from "react-bootstrap"
+import DetailModal from "@/components/Modal/DetailModal"
 
-const TrendCard: React.FC<ITrendCardProps> = ({ item }) => {
-  const [showModal, setShowModal] = useState(false);
+const TrendCard = ({ item }) => {
+  const [showModal, setShowModal] = useState(false)
 
   const handleShowModal = () => {
-    setShowModal(true);
-  };
+    setShowModal(true)
+  }
   const handleCloseModal = () => {
-    setShowModal(false);
-  };
+    setShowModal(false)
+  }
 
   return (
     <>
@@ -45,7 +44,7 @@ const TrendCard: React.FC<ITrendCardProps> = ({ item }) => {
         coinId={item?.id}
       />
     </>
-  );
-};
+  )
+}
 
-export default TrendCard;
+export default TrendCard
