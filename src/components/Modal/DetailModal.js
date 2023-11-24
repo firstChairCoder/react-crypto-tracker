@@ -1,34 +1,33 @@
-import React, { useState } from "react";
-import { Modal, Spinner, Badge, Button, ProgressBar } from "react-bootstrap";
-import { IDetailModalProps } from "@/types";
-import { useDispatch } from "react-redux";
-import { fetchById } from "@/features/Crypto/CryptoSlice";
-import useCurrencyFormat from "@/hooks/useCurrencyFormat";
-import useNumberFormat from "@/hooks/useNumberFormat";
+import React, { useState } from "react"
+import { Modal, Spinner, Badge, Button, ProgressBar } from "react-bootstrap"
+import { useDispatch } from "react-redux"
+import { fetchById } from "@/features/Crypto/CryptoSlice"
+import useCurrencyFormat from "@/hooks/useCurrencyFormat"
+import useNumberFormat from "@/hooks/useNumberFormat"
 import {
   CaretDownFill,
   CaretUpFill,
   Twitter,
   Facebook,
   Reddit,
-  Github,
-} from "react-bootstrap-icons";
-import "./DetailModal.scss";
+  Github
+} from "react-bootstrap-icons"
+import "./DetailModal.scss"
 
-const DetailModal: React.FC<IDetailModalProps> = (props) => {
-  const { show, onHide, coinId } = props;
+const DetailModal = props => {
+  const { show, onHide, coinId } = props
 
-  const dispatch: any = useDispatch();
-  const [crypto, setCrypto] = useState<any>(null);
+  const dispatch = useDispatch()
+  const [crypto, setCrypto] = useState(null)
 
-  const formatCurrency = useCurrencyFormat();
-  const formatNumber = useNumberFormat();
+  const formatCurrency = useCurrencyFormat()
+  const formatNumber = useNumberFormat()
 
   const handleEntered = async () => {
-    const result = await dispatch(fetchById(coinId));
-    console.log(result.payload);
-    setCrypto(result.payload);
-  };
+    const result = await dispatch(fetchById(coinId))
+    console.log(result.payload)
+    setCrypto(result.payload)
+  }
 
   return (
     <Modal
@@ -240,7 +239,7 @@ const DetailModal: React.FC<IDetailModalProps> = (props) => {
         )}
       </Modal.Body>
     </Modal>
-  );
-};
+  )
+}
 
-export default DetailModal;
+export default DetailModal
