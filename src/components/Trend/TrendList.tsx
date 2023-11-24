@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Row, Col, Spinner, Alert } from "react-bootstrap";
 import TrendCard from "@/components/Trend/TrendCard";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTrendData } from "@/features/Trend/TrendSlice";
+import { fetchTrendData } from "@/features/trend/TrendSlice";
 import { ICoin } from "@/types";
 import "./Trend.scss";
 
